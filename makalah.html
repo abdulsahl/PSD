@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'makalah';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Klasifikasi Time Series Gun Point" href="UAS.html" />
+    <link rel="prev" title="DTW" href="DTW.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sains Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bisnis-understanding.html"><strong>Bisnis Understanding</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-understanding.html"><strong>Data Understanding</strong></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-preprocessing.html"><strong>Data Preprocessing</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="imbalanced_iris.html"><strong>Imbalanced Data Iris</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="imbalanced_bank.html"><strong>Imbalanced Data Bank</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="forecasting_NO2.html"><strong>Time Series Forecasting</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="forecasting_NO2_korelasi.html"><strong>Time Series Forecasting</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="suara.html"><strong>Klasfikasi Suara</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html"><strong>DTW</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="UAS.html"><strong>Klasifikasi Time Series Gun Point</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html/issues/new?title=Issue%20on%20page%20%2Fmakalah.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/makalah.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pycaret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Memuat data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;no2_surabaya.csv&#39;</span><span class="p">)</span>
+<span class="c1"># 2. Konversi kolom &#39;t&#39; menjadi datetime</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+<span class="c1"># Aggregasi data </span>
+<span class="c1"># Karena ada tanggal ganda, kita ambil rata-rata (mean) NO2 per hari</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="c1"># Mengatur Frekuensi Harian</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="c1"># scaling data</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000000</span> 
+
+<span class="c1"># Memeriksa data </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Info Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">5 Data Teratas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Info Data:
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 1081 entries, 2022-10-21 to 2025-10-05
+Freq: D
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   NO2     776 non-null    float64
+dtypes: float64(1)
+memory usage: 16.9 KB
+None
+
+5 Data Teratas:
+                  NO2
+t                    
+2022-10-21        NaN
+2022-10-22  87.540855
+2022-10-23  70.853889
+2022-10-24        NaN
+2022-10-25  50.313709
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung jumlah missing value</span>
+<span class="n">missing_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">total_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">missing_count</span> <span class="o">/</span> <span class="n">total_rows</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah Data Hilang: </span><span class="si">{</span><span class="n">missing_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Persentase Data Hilang: </span><span class="si">{</span><span class="n">percentage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi Data Mentah (dengan gap/putus-putus)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rata-rata Harian NO2&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data NO2 Surabaya&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasi NO2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Data Hilang: 305
+Persentase Data Hilang: 28.21%
+</pre></div>
+</div>
+<img alt="_images/75ceab18d154b370918c43c9ff3ba0cddbed1bca95c1518f5a698dc98b0ca0e5.png" src="_images/75ceab18d154b370918c43c9ff3ba0cddbed1bca95c1518f5a698dc98b0ca0e5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pycaret.time_series</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;NO2&#39;</span><span class="p">,</span> <span class="n">fh</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">numeric_imputation_target</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_8020b_row25_col1, #T_8020b_row31_col1 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_8020b">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_8020b_level0_col0" class="col_heading level0 col0" >Description</th>
+      <th id="T_8020b_level0_col1" class="col_heading level0 col1" >Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_8020b_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_8020b_row0_col0" class="data row0 col0" >session_id</td>
+      <td id="T_8020b_row0_col1" class="data row0 col1" >123</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_8020b_row1_col0" class="data row1 col0" >Target</td>
+      <td id="T_8020b_row1_col1" class="data row1 col1" >NO2</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_8020b_row2_col0" class="data row2 col0" >Approach</td>
+      <td id="T_8020b_row2_col1" class="data row2 col1" >Univariate</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_8020b_row3_col0" class="data row3 col0" >Exogenous Variables</td>
+      <td id="T_8020b_row3_col1" class="data row3 col1" >Not Present</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_8020b_row4_col0" class="data row4 col0" >Original data shape</td>
+      <td id="T_8020b_row4_col1" class="data row4 col1" >(1081, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_8020b_row5_col0" class="data row5 col0" >Transformed data shape</td>
+      <td id="T_8020b_row5_col1" class="data row5 col1" >(1081, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_8020b_row6_col0" class="data row6 col0" >Transformed train set shape</td>
+      <td id="T_8020b_row6_col1" class="data row6 col1" >(1051, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_8020b_row7_col0" class="data row7 col0" >Transformed test set shape</td>
+      <td id="T_8020b_row7_col1" class="data row7 col1" >(30, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_8020b_row8_col0" class="data row8 col0" >Rows with missing values</td>
+      <td id="T_8020b_row8_col1" class="data row8 col1" >28.2%</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_8020b_row9_col0" class="data row9 col0" >Fold Generator</td>
+      <td id="T_8020b_row9_col1" class="data row9 col1" >ExpandingWindowSplitter</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_8020b_row10_col0" class="data row10 col0" >Fold Number</td>
+      <td id="T_8020b_row10_col1" class="data row10 col1" >3</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_8020b_row11_col0" class="data row11 col0" >Enforce Prediction Interval</td>
+      <td id="T_8020b_row11_col1" class="data row11 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_8020b_row12_col0" class="data row12 col0" >Splits used for hyperparameters</td>
+      <td id="T_8020b_row12_col1" class="data row12 col1" >all</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_8020b_row13_col0" class="data row13 col0" >User Defined Seasonal Period(s)</td>
+      <td id="T_8020b_row13_col1" class="data row13 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_8020b_row14_col0" class="data row14 col0" >Ignore Seasonality Test</td>
+      <td id="T_8020b_row14_col1" class="data row14 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_8020b_row15_col0" class="data row15 col0" >Seasonality Detection Algo</td>
+      <td id="T_8020b_row15_col1" class="data row15 col1" >auto</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_8020b_row16_col0" class="data row16 col0" >Max Period to Consider</td>
+      <td id="T_8020b_row16_col1" class="data row16 col1" >60</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_8020b_row17_col0" class="data row17 col0" >Seasonal Period(s) Tested</td>
+      <td id="T_8020b_row17_col1" class="data row17 col1" >[2, 3, 4, 5, 6, 22, 8, 7, 21, 9, 28, 27, 10, 26, 11, 20, 29, 25, 23, 31, 30]</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_8020b_row18_col0" class="data row18 col0" >Significant Seasonal Period(s)</td>
+      <td id="T_8020b_row18_col1" class="data row18 col1" >[2, 3, 4, 5, 6, 22, 8, 7, 21, 9, 28, 27, 10, 26, 11, 20, 29, 25, 23, 31, 30]</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_8020b_row19_col0" class="data row19 col0" >Significant Seasonal Period(s) without Harmonics</td>
+      <td id="T_8020b_row19_col1" class="data row19 col1" >[30, 28, 22, 8, 21, 27, 26, 20, 29, 25, 23, 31]</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_8020b_row20_col0" class="data row20 col0" >Remove Harmonics</td>
+      <td id="T_8020b_row20_col1" class="data row20 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_8020b_row21_col0" class="data row21 col0" >Harmonics Order Method</td>
+      <td id="T_8020b_row21_col1" class="data row21 col1" >harmonic_max</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_8020b_row22_col0" class="data row22 col0" >Num Seasonalities to Use</td>
+      <td id="T_8020b_row22_col1" class="data row22 col1" >1</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_8020b_row23_col0" class="data row23 col0" >All Seasonalities to Use</td>
+      <td id="T_8020b_row23_col1" class="data row23 col1" >[2]</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row24" class="row_heading level0 row24" >24</th>
+      <td id="T_8020b_row24_col0" class="data row24 col0" >Primary Seasonality</td>
+      <td id="T_8020b_row24_col1" class="data row24 col1" >2</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row25" class="row_heading level0 row25" >25</th>
+      <td id="T_8020b_row25_col0" class="data row25 col0" >Seasonality Present</td>
+      <td id="T_8020b_row25_col1" class="data row25 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row26" class="row_heading level0 row26" >26</th>
+      <td id="T_8020b_row26_col0" class="data row26 col0" >Seasonality Type</td>
+      <td id="T_8020b_row26_col1" class="data row26 col1" >mul</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row27" class="row_heading level0 row27" >27</th>
+      <td id="T_8020b_row27_col0" class="data row27 col0" >Target Strictly Positive</td>
+      <td id="T_8020b_row27_col1" class="data row27 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row28" class="row_heading level0 row28" >28</th>
+      <td id="T_8020b_row28_col0" class="data row28 col0" >Target White Noise</td>
+      <td id="T_8020b_row28_col1" class="data row28 col1" >No</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row29" class="row_heading level0 row29" >29</th>
+      <td id="T_8020b_row29_col0" class="data row29 col0" >Recommended d</td>
+      <td id="T_8020b_row29_col1" class="data row29 col1" >0</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row30" class="row_heading level0 row30" >30</th>
+      <td id="T_8020b_row30_col0" class="data row30 col0" >Recommended Seasonal D</td>
+      <td id="T_8020b_row30_col1" class="data row30 col1" >0</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row31" class="row_heading level0 row31" >31</th>
+      <td id="T_8020b_row31_col0" class="data row31 col0" >Preprocess</td>
+      <td id="T_8020b_row31_col1" class="data row31 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row32" class="row_heading level0 row32" >32</th>
+      <td id="T_8020b_row32_col0" class="data row32 col0" >Numerical Imputation (Target)</td>
+      <td id="T_8020b_row32_col1" class="data row32 col1" >linear</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row33" class="row_heading level0 row33" >33</th>
+      <td id="T_8020b_row33_col0" class="data row33 col0" >Transformation (Target)</td>
+      <td id="T_8020b_row33_col1" class="data row33 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row34" class="row_heading level0 row34" >34</th>
+      <td id="T_8020b_row34_col0" class="data row34 col0" >Scaling (Target)</td>
+      <td id="T_8020b_row34_col1" class="data row34 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row35" class="row_heading level0 row35" >35</th>
+      <td id="T_8020b_row35_col0" class="data row35 col0" >Feature Engineering (Target) - Reduced Regression</td>
+      <td id="T_8020b_row35_col1" class="data row35 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row36" class="row_heading level0 row36" >36</th>
+      <td id="T_8020b_row36_col0" class="data row36 col0" >CPU Jobs</td>
+      <td id="T_8020b_row36_col1" class="data row36 col1" >-1</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row37" class="row_heading level0 row37" >37</th>
+      <td id="T_8020b_row37_col0" class="data row37 col0" >Use GPU</td>
+      <td id="T_8020b_row37_col1" class="data row37 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row38" class="row_heading level0 row38" >38</th>
+      <td id="T_8020b_row38_col0" class="data row38 col0" >Log Experiment</td>
+      <td id="T_8020b_row38_col1" class="data row38 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row39" class="row_heading level0 row39" >39</th>
+      <td id="T_8020b_row39_col0" class="data row39 col0" >Experiment Name</td>
+      <td id="T_8020b_row39_col1" class="data row39 col1" >ts-default-name</td>
+    </tr>
+    <tr>
+      <th id="T_8020b_level0_row40" class="row_heading level0 row40" >40</th>
+      <td id="T_8020b_row40_col0" class="data row40 col0" >USI</td>
+      <td id="T_8020b_row40_col1" class="data row40 col1" >7e1a</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat model Exponential Smoothing (ETS)</span>
+<span class="n">ets_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;ets&#39;</span><span class="p">)</span>
+<span class="c1"># Menampilkan parameter model yang ditemukan otomatis</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ets_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"></div><div class="output text_html"><style type="text/css">
+#T_cbaf1_row3_col0, #T_cbaf1_row3_col1, #T_cbaf1_row3_col2, #T_cbaf1_row3_col3, #T_cbaf1_row3_col4, #T_cbaf1_row3_col5, #T_cbaf1_row3_col6, #T_cbaf1_row3_col7 {
+  background: yellow;
+}
+</style>
+<table id="T_cbaf1">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_cbaf1_level0_col0" class="col_heading level0 col0" >cutoff</th>
+      <th id="T_cbaf1_level0_col1" class="col_heading level0 col1" >MASE</th>
+      <th id="T_cbaf1_level0_col2" class="col_heading level0 col2" >RMSSE</th>
+      <th id="T_cbaf1_level0_col3" class="col_heading level0 col3" >MAE</th>
+      <th id="T_cbaf1_level0_col4" class="col_heading level0 col4" >RMSE</th>
+      <th id="T_cbaf1_level0_col5" class="col_heading level0 col5" >MAPE</th>
+      <th id="T_cbaf1_level0_col6" class="col_heading level0 col6" >SMAPE</th>
+      <th id="T_cbaf1_level0_col7" class="col_heading level0 col7" >R2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_cbaf1_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_cbaf1_row0_col0" class="data row0 col0" >2025-06-07</td>
+      <td id="T_cbaf1_row0_col1" class="data row0 col1" >0.6486</td>
+      <td id="T_cbaf1_row0_col2" class="data row0 col2" >0.5577</td>
+      <td id="T_cbaf1_row0_col3" class="data row0 col3" >11.2410</td>
+      <td id="T_cbaf1_row0_col4" class="data row0 col4" >14.6796</td>
+      <td id="T_cbaf1_row0_col5" class="data row0 col5" >0.2862</td>
+      <td id="T_cbaf1_row0_col6" class="data row0 col6" >0.2966</td>
+      <td id="T_cbaf1_row0_col7" class="data row0 col7" >-0.2780</td>
+    </tr>
+    <tr>
+      <th id="T_cbaf1_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_cbaf1_row1_col0" class="data row1 col0" >2025-07-07</td>
+      <td id="T_cbaf1_row1_col1" class="data row1 col1" >0.7753</td>
+      <td id="T_cbaf1_row1_col2" class="data row1 col2" >0.8439</td>
+      <td id="T_cbaf1_row1_col3" class="data row1 col3" >13.3935</td>
+      <td id="T_cbaf1_row1_col4" class="data row1 col4" >22.0509</td>
+      <td id="T_cbaf1_row1_col5" class="data row1 col5" >0.3101</td>
+      <td id="T_cbaf1_row1_col6" class="data row1 col6" >0.3017</td>
+      <td id="T_cbaf1_row1_col7" class="data row1 col7" >-0.1387</td>
+    </tr>
+    <tr>
+      <th id="T_cbaf1_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_cbaf1_row2_col0" class="data row2 col0" >2025-08-06</td>
+      <td id="T_cbaf1_row2_col1" class="data row2 col1" >0.5598</td>
+      <td id="T_cbaf1_row2_col2" class="data row2 col2" >0.5112</td>
+      <td id="T_cbaf1_row2_col3" class="data row2 col3" >9.7095</td>
+      <td id="T_cbaf1_row2_col4" class="data row2 col4" >13.4237</td>
+      <td id="T_cbaf1_row2_col5" class="data row2 col5" >0.4832</td>
+      <td id="T_cbaf1_row2_col6" class="data row2 col6" >0.2988</td>
+      <td id="T_cbaf1_row2_col7" class="data row2 col7" >-0.0592</td>
+    </tr>
+    <tr>
+      <th id="T_cbaf1_level0_row3" class="row_heading level0 row3" >Mean</th>
+      <td id="T_cbaf1_row3_col0" class="data row3 col0" >NaT</td>
+      <td id="T_cbaf1_row3_col1" class="data row3 col1" >0.6612</td>
+      <td id="T_cbaf1_row3_col2" class="data row3 col2" >0.6376</td>
+      <td id="T_cbaf1_row3_col3" class="data row3 col3" >11.4480</td>
+      <td id="T_cbaf1_row3_col4" class="data row3 col4" >16.7181</td>
+      <td id="T_cbaf1_row3_col5" class="data row3 col5" >0.3599</td>
+      <td id="T_cbaf1_row3_col6" class="data row3 col6" >0.2990</td>
+      <td id="T_cbaf1_row3_col7" class="data row3 col7" >-0.1586</td>
+    </tr>
+    <tr>
+      <th id="T_cbaf1_level0_row4" class="row_heading level0 row4" >SD</th>
+      <td id="T_cbaf1_row4_col0" class="data row4 col0" >NaT</td>
+      <td id="T_cbaf1_row4_col1" class="data row4 col1" >0.0884</td>
+      <td id="T_cbaf1_row4_col2" class="data row4 col2" >0.1471</td>
+      <td id="T_cbaf1_row4_col3" class="data row4 col3" >1.5111</td>
+      <td id="T_cbaf1_row4_col4" class="data row4 col4" >3.8056</td>
+      <td id="T_cbaf1_row4_col5" class="data row4 col5" >0.0877</td>
+      <td id="T_cbaf1_row4_col6" class="data row4 col6" >0.0021</td>
+      <td id="T_cbaf1_row4_col7" class="data row4 col7" >0.0904</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoETS(seasonal=&#39;mul&#39;, sp=2, trend=&#39;add&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Melakukan prediksi (Forecast)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">predict_model</span><span class="p">(</span><span class="n">ets_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi Grafik Peramalan</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">ets_model</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="s1">&#39;forecast&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi Komponen (Level, Trend, Musiman)</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">ets_model</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="s1">&#39;decomp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_449f9">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_449f9_level0_col0" class="col_heading level0 col0" >Model</th>
+      <th id="T_449f9_level0_col1" class="col_heading level0 col1" >MASE</th>
+      <th id="T_449f9_level0_col2" class="col_heading level0 col2" >RMSSE</th>
+      <th id="T_449f9_level0_col3" class="col_heading level0 col3" >MAE</th>
+      <th id="T_449f9_level0_col4" class="col_heading level0 col4" >RMSE</th>
+      <th id="T_449f9_level0_col5" class="col_heading level0 col5" >MAPE</th>
+      <th id="T_449f9_level0_col6" class="col_heading level0 col6" >SMAPE</th>
+      <th id="T_449f9_level0_col7" class="col_heading level0 col7" >R2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_449f9_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_449f9_row0_col0" class="data row0 col0" >ETS</td>
+      <td id="T_449f9_row0_col1" class="data row0 col1" >0.7792</td>
+      <td id="T_449f9_row0_col2" class="data row0 col2" >0.8672</td>
+      <td id="T_449f9_row0_col3" class="data row0 col3" >13.3840</td>
+      <td id="T_449f9_row0_col4" class="data row0 col4" >22.5705</td>
+      <td id="T_449f9_row0_col5" class="data row0 col5" >0.2666</td>
+      <td id="T_449f9_row0_col6" class="data row0 col6" >0.3043</td>
+      <td id="T_449f9_row0_col7" class="data row0 col7" >-0.2911</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             y_pred
+2025-09-06  31.5582
+2025-09-07  31.7335
+2025-09-08  31.4799
+2025-09-09  31.6546
+2025-09-10  31.4016
+2025-09-11  31.5758
+2025-09-12  31.3233
+2025-09-13  31.4970
+2025-09-14  31.2450
+2025-09-15  31.4182
+2025-09-16  31.1667
+2025-09-17  31.3393
+2025-09-18  31.0884
+2025-09-19  31.2605
+2025-09-20  31.0101
+2025-09-21  31.1817
+2025-09-22  30.9318
+2025-09-23  31.1028
+2025-09-24  30.8535
+2025-09-25  31.0240
+2025-09-26  30.7752
+2025-09-27  30.9452
+2025-09-28  30.6969
+2025-09-29  30.8664
+2025-09-30  30.6186
+2025-10-01  30.7875
+2025-10-02  30.5404
+2025-10-03  30.7087
+2025-10-04  30.4621
+2025-10-05  30.6299
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DTW.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>DTW</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="UAS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Klasifikasi Time Series Gun Point</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdulloh Sahl - 2025
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

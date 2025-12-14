@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Imbalanced Data Bank &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'imbalanced_bank';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time Series Forecasting" href="forecasting_NO2.html" />
+    <link rel="prev" title="Imbalanced Data Iris" href="imbalanced_iris.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sains Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bisnis-understanding.html"><strong>Bisnis Understanding</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-understanding.html"><strong>Data Understanding</strong></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="data-preprocessing.html"><strong>Data Preprocessing</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="imbalanced_iris.html"><strong>Imbalanced Data Iris</strong></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Imbalanced Data Bank</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="forecasting_NO2.html"><strong>Time Series Forecasting</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="forecasting_NO2_korelasi.html"><strong>Time Series Forecasting</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="suara.html"><strong>Klasfikasi Suara</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html"><strong>DTW</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="UAS.html"><strong>Klasifikasi Time Series Gun Point</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html/issues/new?title=Issue%20on%20page%20%2Fimbalanced_bank.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/imbalanced_bank.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Imbalanced Data Bank</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muat-dan-pra-pemrosesan-data">1. Muat dan Pra-pemrosesan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-distribusi-kelas-awal">2. Analisis Distribusi Kelas Awal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-tidak-seimbang-original">3. Klasifikasi pada Data Tidak Seimbang (Original)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-data-dengan-smote">4. Menyeimbangkan Data dengan SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-seimbang-smote">5. Klasifikasi pada Data Seimbang (SMOTE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-data-dengan-adasyn">6. Menyeimbangkan Data dengan ADASYN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-seimbang-adasyn">7. Klasifikasi pada Data Seimbang (ADASYN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dan-perbandingan">8. Kesimpulan dan Perbandingan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="imbalanced-data-bank">
+<h1><strong>Imbalanced Data Bank</strong><a class="headerlink" href="#imbalanced-data-bank" title="Link to this heading">#</a></h1>
+<section id="muat-dan-pra-pemrosesan-data">
+<h2>1. Muat dan Pra-pemrosesan Data<a class="headerlink" href="#muat-dan-pra-pemrosesan-data" title="Link to this heading">#</a></h2>
+<p>Tahap pertama adalah memuat dataset <code class="docutils literal notranslate"><span class="pre">bank</span></code>. Dataset ini berisi fitur-fitur nasabah bank dan variabel target ‘y’ yang menunjukkan apakah nasabah tersebut berlangganan deposito berjangka atau tidak (‘yes’/’no’).</p>
+<p>Karena model machine learning memerlukan input numerik, kita akan melakukan beberapa langkah pra-pemrosesan:</p>
+<ol class="arabic simple">
+<li><p><strong>Encoding Variabel Target:</strong> Mengubah ‘y’ (‘no’/’yes’) menjadi 0/1.</p></li>
+<li><p><strong>One-Hot Encoding:</strong> Mengubah fitur-fitur kategorikal (seperti ‘job’, ‘marital’, ‘education’) menjadi kolom-kolom numerik.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span><span class="p">,</span> <span class="n">ADASYN</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mlxtend.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_decision_regions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Muat data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;bank.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Pisahkan fitur (X) dan target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+
+<span class="c1"># Encoding variabel target</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)</span>
+
+<span class="c1"># One-Hot Encoding untuk fitur kategorikal</span>
+<span class="n">categorical_cols</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">categorical_cols</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Scaling fitur numerik</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of feature matrix after encoding:&quot;</span><span class="p">,</span> <span class="n">X_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape of feature matrix after encoding: (4521, 42)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analisis-distribusi-kelas-awal">
+<h2>2. Analisis Distribusi Kelas Awal<a class="headerlink" href="#analisis-distribusi-kelas-awal" title="Link to this heading">#</a></h2>
+<p>Kita akan memeriksa distribusi kelas pada variabel target. Dataset ini secara alami tidak seimbang, di mana jumlah nasabah yang tidak berlangganan (kelas 0) jauh lebih banyak daripada yang berlangganan (kelas 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Awal:&quot;</span><span class="p">)</span>
+<span class="n">class_distribution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">class_distribution</span><span class="p">)</span>
+
+<span class="n">class_distribution</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Kelas Awal (0: No, 1: Yes)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kelas&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Awal:
+0    4000
+1     521
+Name: count, dtype: int64
+</pre></div>
+</div>
+<img alt="_images/9bf4a6c45e0956ea60886c783f20ef5a7fc2ce71d2332181f77dea53115d4eda.png" src="_images/9bf4a6c45e0956ea60886c783f20ef5a7fc2ce71d2332181f77dea53115d4eda.png" />
+</div>
+</div>
+</section>
+<section id="klasifikasi-pada-data-tidak-seimbang-original">
+<h2>3. Klasifikasi pada Data Tidak Seimbang (Original)<a class="headerlink" href="#klasifikasi-pada-data-tidak-seimbang-original" title="Link to this heading">#</a></h2>
+<p>Pertama, kita akan melatih dan mengevaluasi model pada data asli yang tidak seimbang. Untuk tujuan visualisasi, kita akan mereduksi dimensi fitur menjadi 2 komponen utama menggunakan PCA. Model akan dilatih dan dievaluasi pada data hasil PCA ini.</p>
+<p>Model yang digunakan:</p>
+<ul class="simple">
+<li><p>SVM Tunggal</p></li>
+<li><p>Decision Tree Tunggal</p></li>
+<li><p>Bagging dengan SVM</p></li>
+<li><p>Bagging dengan Decision Tree</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA untuk reduksi dimensi menjadi 2 untuk visualisasi</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+
+<span class="c1"># Split data hasil PCA</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi Model</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;SVM&quot;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="s2">&quot;Decision Tree&quot;</span><span class="p">:</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="s2">&quot;Bagging SVM&quot;</span><span class="p">:</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="s2">&quot;Bagging DT&quot;</span><span class="p">:</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Hasil </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> pada Data Tidak Seimbang ---&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+    
+    <span class="c1"># Plotting</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decision Boundary </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> pada Data Tidak Seimbang&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil SVM pada Data Tidak Seimbang ---
+Akurasi: 0.8850405305821666
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.89      1.00      0.94      1201
+         yes       0.00      0.00      0.00       156
+
+    accuracy                           0.89      1357
+   macro avg       0.44      0.50      0.47      1357
+weighted avg       0.78      0.89      0.83      1357
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+</pre></div>
+</div>
+<img alt="_images/6d077529f9174460d2a61c61fb0838d1afc188dadc7b21a02001f17290311fb5.png" src="_images/6d077529f9174460d2a61c61fb0838d1afc188dadc7b21a02001f17290311fb5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Decision Tree pada Data Tidak Seimbang ---
+Akurasi: 0.8039793662490788
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.89      0.89      0.89      1201
+         yes       0.16      0.17      0.17       156
+
+    accuracy                           0.80      1357
+   macro avg       0.53      0.53      0.53      1357
+weighted avg       0.81      0.80      0.81      1357
+</pre></div>
+</div>
+<img alt="_images/1766472fe93559b5e37774d1546c9edbac1ca7741dafef532a799dd2fc2e5dd9.png" src="_images/1766472fe93559b5e37774d1546c9edbac1ca7741dafef532a799dd2fc2e5dd9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging SVM pada Data Tidak Seimbang ---
+Akurasi: 0.8850405305821666
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.89      1.00      0.94      1201
+         yes       0.00      0.00      0.00       156
+
+    accuracy                           0.89      1357
+   macro avg       0.44      0.50      0.47      1357
+weighted avg       0.78      0.89      0.83      1357
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+/usr/local/lib/python3.11/dist-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+</pre></div>
+</div>
+<img alt="_images/dbc38c6d241f6e97c5d2bce97671ff4646c8aef730af7b08ac9ae0f50488f472.png" src="_images/dbc38c6d241f6e97c5d2bce97671ff4646c8aef730af7b08ac9ae0f50488f472.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging DT pada Data Tidak Seimbang ---
+Akurasi: 0.8585114222549742
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.89      0.95      0.92      1201
+         yes       0.26      0.13      0.17       156
+
+    accuracy                           0.86      1357
+   macro avg       0.58      0.54      0.55      1357
+weighted avg       0.82      0.86      0.84      1357
+</pre></div>
+</div>
+<img alt="_images/dc30e8f9afb4d0feea2cb468b6171a65dd3a31c65d70ad14bb57ea0fe08eb3af.png" src="_images/dc30e8f9afb4d0feea2cb468b6171a65dd3a31c65d70ad14bb57ea0fe08eb3af.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menyeimbangkan-data-dengan-smote">
+<h2>4. Menyeimbangkan Data dengan SMOTE<a class="headerlink" href="#menyeimbangkan-data-dengan-smote" title="Link to this heading">#</a></h2>
+<p>SMOTE (Synthetic Minority Over-sampling Technique) akan digunakan untuk membuat sampel sintetis dari kelas minoritas. Ini akan menyeimbangkan distribusi kelas sehingga model tidak bias terhadap kelas mayoritas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_smote</span><span class="p">,</span> <span class="n">y_smote</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Setelah SMOTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_smote</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Setelah SMOTE:
+0    4000
+1    4000
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klasifikasi-pada-data-seimbang-smote">
+<h2>5. Klasifikasi pada Data Seimbang (SMOTE)<a class="headerlink" href="#klasifikasi-pada-data-seimbang-smote" title="Link to this heading">#</a></h2>
+<p>Sekarang, kita melatih dan mengevaluasi model yang sama pada data yang telah diseimbangkan oleh SMOTE. Kita harapkan ada peningkatan pada metrik <code class="docutils literal notranslate"><span class="pre">recall</span></code> untuk kelas ‘yes’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA pada data SMOTE</span>
+<span class="n">pca_smote</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca_smote</span> <span class="o">=</span> <span class="n">pca_smote</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_smote</span><span class="p">)</span>
+
+<span class="c1"># Split data hasil PCA</span>
+<span class="n">X_train_sm</span><span class="p">,</span> <span class="n">X_test_sm</span><span class="p">,</span> <span class="n">y_train_sm</span><span class="p">,</span> <span class="n">y_test_sm</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pca_smote</span><span class="p">,</span> <span class="n">y_smote</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_smote</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Hasil </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> pada Data Seimbang (SMOTE) ---&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_sm</span><span class="p">,</span> <span class="n">y_train_sm</span><span class="p">)</span>
+    <span class="n">y_pred_sm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_sm</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_sm</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_sm</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_sm</span><span class="p">,</span> <span class="n">y_pred_sm</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+    
+    <span class="c1"># Plotting</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca_smote</span><span class="p">,</span> <span class="n">y_smote</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decision Boundary </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> pada Data Seimbang (SMOTE)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil SVM pada Data Seimbang (SMOTE) ---
+Akurasi: 0.6316666666666667
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.60      0.76      0.67      1200
+         yes       0.68      0.50      0.58      1200
+
+    accuracy                           0.63      2400
+   macro avg       0.64      0.63      0.63      2400
+weighted avg       0.64      0.63      0.63      2400
+</pre></div>
+</div>
+<img alt="_images/ba369b9c3c533e659746947e4305f261d0ae6a999584766421e85b5420f9c797.png" src="_images/ba369b9c3c533e659746947e4305f261d0ae6a999584766421e85b5420f9c797.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Decision Tree pada Data Seimbang (SMOTE) ---
+Akurasi: 0.6275
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.63      0.61      0.62      1200
+         yes       0.62      0.64      0.63      1200
+
+    accuracy                           0.63      2400
+   macro avg       0.63      0.63      0.63      2400
+weighted avg       0.63      0.63      0.63      2400
+</pre></div>
+</div>
+<img alt="_images/7c46d962954d41636aed675baa0c82aeb3bffa29e1640938cb5b6e546be455fb.png" src="_images/7c46d962954d41636aed675baa0c82aeb3bffa29e1640938cb5b6e546be455fb.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging SVM pada Data Seimbang (SMOTE) ---
+Akurasi: 0.63
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.60      0.77      0.67      1200
+         yes       0.68      0.49      0.57      1200
+
+    accuracy                           0.63      2400
+   macro avg       0.64      0.63      0.62      2400
+weighted avg       0.64      0.63      0.62      2400
+</pre></div>
+</div>
+<img alt="_images/d945959b7252a91595c595c89c97a51dc108c12d23d9d943b0becdbe3a19e8bc.png" src="_images/d945959b7252a91595c595c89c97a51dc108c12d23d9d943b0becdbe3a19e8bc.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging DT pada Data Seimbang (SMOTE) ---
+Akurasi: 0.6670833333333334
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.66      0.70      0.68      1200
+         yes       0.68      0.63      0.65      1200
+
+    accuracy                           0.67      2400
+   macro avg       0.67      0.67      0.67      2400
+weighted avg       0.67      0.67      0.67      2400
+</pre></div>
+</div>
+<img alt="_images/ce1fec8f587570ae1ee8e76ca2ed4efc4aa4508fc865d6a4c5a14305a7080c93.png" src="_images/ce1fec8f587570ae1ee8e76ca2ed4efc4aa4508fc865d6a4c5a14305a7080c93.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menyeimbangkan-data-dengan-adasyn">
+<h2>6. Menyeimbangkan Data dengan ADASYN<a class="headerlink" href="#menyeimbangkan-data-dengan-adasyn" title="Link to this heading">#</a></h2>
+<p>ADASYN (Adaptive Synthetic Sampling) adalah alternatif dari SMOTE. ADASYN juga membuat sampel sintetis, tetapi lebih fokus pada sampel minoritas yang lebih sulit untuk dipelajari (yang berada di dekat batas keputusan). Ini bisa menghasilkan batas keputusan yang lebih baik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adasyn</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_adasyn</span><span class="p">,</span> <span class="n">y_adasyn</span> <span class="o">=</span> <span class="n">adasyn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Setelah ADASYN:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_adasyn</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Setelah ADASYN:
+0    4000
+1    3971
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klasifikasi-pada-data-seimbang-adasyn">
+<h2>7. Klasifikasi pada Data Seimbang (ADASYN)<a class="headerlink" href="#klasifikasi-pada-data-seimbang-adasyn" title="Link to this heading">#</a></h2>
+<p>Terakhir, kita evaluasi model pada data yang diseimbangkan oleh ADASYN untuk membandingkan hasilnya dengan SMOTE dan data asli.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA pada data ADASYN</span>
+<span class="n">pca_adasyn</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca_adasyn</span> <span class="o">=</span> <span class="n">pca_adasyn</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_adasyn</span><span class="p">)</span>
+
+<span class="c1"># Split data hasil PCA</span>
+<span class="n">X_train_ad</span><span class="p">,</span> <span class="n">X_test_ad</span><span class="p">,</span> <span class="n">y_train_ad</span><span class="p">,</span> <span class="n">y_test_ad</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pca_adasyn</span><span class="p">,</span> <span class="n">y_adasyn</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_adasyn</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Hasil </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> pada Data Seimbang (ADASYN) ---&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ad</span><span class="p">,</span> <span class="n">y_train_ad</span><span class="p">)</span>
+    <span class="n">y_pred_ad</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ad</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_ad</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_ad</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_ad</span><span class="p">,</span> <span class="n">y_pred_ad</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+    
+    <span class="c1"># Plotting</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca_adasyn</span><span class="p">,</span> <span class="n">y_adasyn</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decision Boundary </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> pada Data Seimbang (ADASYN)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil SVM pada Data Seimbang (ADASYN) ---
+Akurasi: 0.6020066889632107
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.57      0.80      0.67      1200
+         yes       0.66      0.41      0.51      1192
+
+    accuracy                           0.60      2392
+   macro avg       0.62      0.60      0.59      2392
+weighted avg       0.62      0.60      0.59      2392
+</pre></div>
+</div>
+<img alt="_images/8c23070db5001b820220e3e83d3b06193f3b84973aee5ffd5b80e243b32e780f.png" src="_images/8c23070db5001b820220e3e83d3b06193f3b84973aee5ffd5b80e243b32e780f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Decision Tree pada Data Seimbang (ADASYN) ---
+Akurasi: 0.5999163879598662
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.60      0.59      0.60      1200
+         yes       0.60      0.61      0.60      1192
+
+    accuracy                           0.60      2392
+   macro avg       0.60      0.60      0.60      2392
+weighted avg       0.60      0.60      0.60      2392
+</pre></div>
+</div>
+<img alt="_images/f38337a04edb9a544215177d4ce80a125d2ae7054023a785671d550975823c86.png" src="_images/f38337a04edb9a544215177d4ce80a125d2ae7054023a785671d550975823c86.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging SVM pada Data Seimbang (ADASYN) ---
+Akurasi: 0.6086956521739131
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.58      0.79      0.67      1200
+         yes       0.67      0.43      0.52      1192
+
+    accuracy                           0.61      2392
+   macro avg       0.62      0.61      0.60      2392
+weighted avg       0.62      0.61      0.60      2392
+</pre></div>
+</div>
+<img alt="_images/b1765739c7446d34b8c15a01ee18ed3fa096c0dc88c326eaf778384fc49c4385.png" src="_images/b1765739c7446d34b8c15a01ee18ed3fa096c0dc88c326eaf778384fc49c4385.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+
+--- Hasil Bagging DT pada Data Seimbang (ADASYN) ---
+Akurasi: 0.6417224080267558
+
+Classification Report:
+               precision    recall  f1-score   support
+
+          no       0.63      0.69      0.66      1200
+         yes       0.65      0.60      0.62      1192
+
+    accuracy                           0.64      2392
+   macro avg       0.64      0.64      0.64      2392
+weighted avg       0.64      0.64      0.64      2392
+</pre></div>
+</div>
+<img alt="_images/ac89137b3da9c80c79521ec6d6217618ea9cf17285fe1425f7f1d44d51c6a864.png" src="_images/ac89137b3da9c80c79521ec6d6217618ea9cf17285fe1425f7f1d44d51c6a864.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kesimpulan-dan-perbandingan">
+<h2>8. Kesimpulan dan Perbandingan<a class="headerlink" href="#kesimpulan-dan-perbandingan" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data Tidak Seimbang:</strong> Model yang dilatih pada data asli menunjukkan <code class="docutils literal notranslate"><span class="pre">recall</span></code> yang sangat rendah untuk kelas minoritas (‘yes’). Artinya, model sangat kesulitan mengidentifikasi nasabah yang akan berlangganan. Akurasi yang tinggi di sini menipu karena model cenderung menebak kelas mayoritas.</p></li>
+<li><p><strong>Efek SMOTE &amp; ADASYN:</strong> Kedua teknik oversampling secara dramatis meningkatkan <code class="docutils literal notranslate"><span class="pre">recall</span></code> untuk kelas ‘yes’. Ini berarti model menjadi jauh lebih baik dalam mengidentifikasi kasus positif. Meskipun akurasi keseluruhan mungkin sedikit lebih rendah dibandingkan pada data tidak seimbang, model yang dihasilkan jauh lebih berguna dan adil karena tidak lagi bias terhadap kelas mayoritas. Performa antara SMOTE dan ADASYN cenderung mirip dalam kasus ini.</p></li>
+<li><p><strong>Efek Bagging:</strong> Menggunakan <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code> (baik dengan SVM maupun Decision Tree) pada data yang sudah diseimbangkan memberikan performa yang solid dan seringkali lebih stabil. Kombinasi <code class="docutils literal notranslate"><span class="pre">Bagging</span></code> dengan <code class="docutils literal notranslate"><span class="pre">Decision</span> <span class="pre">Tree</span></code> pada data yang telah di-oversampling (SMOTE/ADASYN) tampaknya memberikan keseimbangan yang baik antara <code class="docutils literal notranslate"><span class="pre">precision</span></code> dan <code class="docutils literal notranslate"><span class="pre">recall</span></code>.</p></li>
+</ol>
+<p><strong>Kesimpulan Akhir:</strong> Untuk masalah klasifikasi pada dataset <code class="docutils literal notranslate"><span class="pre">bank</span></code> yang tidak seimbang, menerapkan teknik oversampling seperti <strong>SMOTE</strong> atau <strong>ADASYN</strong> adalah langkah krusial. Menggabungkannya dengan metode ensemble seperti <strong>Bagging</strong> dapat lebih lanjut menstabilkan dan meningkatkan keandalan model.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="imbalanced_iris.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Imbalanced Data Iris</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="forecasting_NO2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Time Series Forecasting</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muat-dan-pra-pemrosesan-data">1. Muat dan Pra-pemrosesan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-distribusi-kelas-awal">2. Analisis Distribusi Kelas Awal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-tidak-seimbang-original">3. Klasifikasi pada Data Tidak Seimbang (Original)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-data-dengan-smote">4. Menyeimbangkan Data dengan SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-seimbang-smote">5. Klasifikasi pada Data Seimbang (SMOTE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-data-dengan-adasyn">6. Menyeimbangkan Data dengan ADASYN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-pada-data-seimbang-adasyn">7. Klasifikasi pada Data Seimbang (ADASYN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dan-perbandingan">8. Kesimpulan dan Perbandingan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdulloh Sahl - 2025
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

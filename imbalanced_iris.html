@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Imbalanced Data Iris &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'imbalanced_iris';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Imbalanced Data Bank" href="imbalanced_bank.html" />
+    <link rel="prev" title="Data Preprocessing" href="data-preprocessing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sains Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bisnis-understanding.html"><strong>Bisnis Understanding</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-understanding.html"><strong>Data Understanding</strong></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="data-preprocessing.html"><strong>Data Preprocessing</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Imbalanced Data Iris</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="imbalanced_bank.html"><strong>Imbalanced Data Bank</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="forecasting_NO2.html"><strong>Time Series Forecasting</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="forecasting_NO2_korelasi.html"><strong>Time Series Forecasting</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="suara.html"><strong>Klasfikasi Suara</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html"><strong>DTW</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="UAS.html"><strong>Klasifikasi Time Series Gun Point</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://abdulsahl.github.io/PSD/intro.html/issues/new?title=Issue%20on%20page%20%2Fimbalanced_iris.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/imbalanced_iris.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Imbalanced Data Iris</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muat-data">1. Muat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-dataset-tidak-seimbang">2. Membuat Dataset Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-tidak-seimbang">3. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-dataset-dengan-smote">4. Menyeimbangkan Dataset dengan SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-seimbang">5. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-dengan-bagging-classifier-pada-data-tidak-seimbang">6. Klasifikasi dengan Bagging Classifier pada Data Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-dengan-bagging-classifier-pada-data-seimbang">7. Klasifikasi dengan Bagging Classifier pada Data Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dan-perbandingan">8. Kesimpulan dan Perbandingan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="imbalanced-data-iris">
+<h1><strong>Imbalanced Data Iris</strong><a class="headerlink" href="#imbalanced-data-iris" title="Link to this heading">#</a></h1>
+<section id="muat-data">
+<h2>1. Muat Data<a class="headerlink" href="#muat-data" title="Link to this heading">#</a></h2>
+<p>Tahap pertama adalah memuat dataset Iris dari file <code class="docutils literal notranslate"><span class="pre">iris.csv</span></code> dan mengimpor semua library yang diperlukan. Dataset ini pada awalnya seimbang sempurna, dengan 50 sampel untuk masing-masing dari tiga kelas spesies: Iris-setosa, Iris-versicolor, dan Iris-virginica. Ini adalah titik awal kita sebelum melakukan rekayasa data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mlxtend.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_decision_regions</span>
+
+<span class="c1"># Muat data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris.csv&#39;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Awal:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Awal:
+species
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membuat-dataset-tidak-seimbang">
+<h2>2. Membuat Dataset Tidak Seimbang<a class="headerlink" href="#membuat-dataset-tidak-seimbang" title="Link to this heading">#</a></h2>
+<p>Untuk menyimulasikan skenario data tidak seimbang, kita akan mengurangi jumlah sampel pada kelas ‘Iris-setosa’ secara drastis dari 50 menjadi hanya 15. Sementara itu, jumlah sampel untuk dua kelas lainnya (‘Iris-versicolor’ dan ‘Iris-virginica’) tetap 50. Hasilnya adalah dataset di mana ‘Iris-setosa’ menjadi kelas minoritas yang signifikan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_setosa</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">]</span>
+<span class="n">df_versicolor</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">]</span>
+<span class="n">df_virginica</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">]</span>
+
+<span class="c1"># Ambil hanya 15 sampel dari setosa</span>
+<span class="n">df_setosa_reduced</span> <span class="o">=</span> <span class="n">df_setosa</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan kembali data</span>
+<span class="n">df_imbalanced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_setosa_reduced</span><span class="p">,</span> <span class="n">df_versicolor</span><span class="p">,</span> <span class="n">df_virginica</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Setelah Pengurangan (Tidak Seimbang):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_imbalanced</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Setelah Pengurangan (Tidak Seimbang):
+species
+Iris-versicolor    50
+Iris-virginica     50
+Iris-setosa        15
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klasifikasi-svm-tunggal-plot-pca-pada-data-tidak-seimbang">
+<h2>3. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Tidak Seimbang<a class="headerlink" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-tidak-seimbang" title="Link to this heading">#</a></h2>
+<p>Pada tahap ini, kita akan melatih model <strong>Support Vector Machine (SVM)</strong> tunggal pada data yang tidak seimbang.</p>
+<p><strong>Proses:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>PCA (Principal Component Analysis):</strong> Kita menggunakan PCA untuk mereduksi 4 fitur asli menjadi 2 komponen utama. Ini bertujuan untuk visualisasi, memungkinkan kita memplot batas keputusan (decision boundary) model pada grafik 2D.</p></li>
+<li><p><strong>Split Data:</strong> Dataset hasil PCA dibagi menjadi data latih (70%) dan data uji (30%).</p></li>
+<li><p><strong>Training Model SVM:</strong> Model SVM dilatih menggunakan data latih yang tidak seimbang.</p></li>
+<li><p><strong>Evaluasi:</strong> Performa model dievaluasi pada data uji. Meskipun akurasi keseluruhan mungkin tampak tinggi, perhatikan metrik <em>recall</em> dan <em>f1-score</em> untuk kelas minoritas (‘Iris-setosa’). Model yang bias cenderung memiliki <em>recall</em> yang rendah pada kelas ini.</p></li>
+<li><p><strong>Plot Batas Keputusan:</strong> Visualisasi menunjukkan bagaimana model memisahkan kelas-kelas di ruang fitur 2D hasil PCA.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definisikan kamus untuk mapping nama spesies ke angka</span>
+<span class="n">species_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Iris-setosa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="c1"># Ambil semua 4 fitur untuk diproses PCA</span>
+<span class="n">X_features</span> <span class="o">=</span> <span class="n">df_imbalanced</span><span class="p">[[</span><span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">,</span> <span class="s1">&#39;petal length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal width&#39;</span><span class="p">]]</span>
+<span class="n">y_imbalanced</span> <span class="o">=</span> <span class="n">df_imbalanced</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
+<span class="n">y_imbalanced_int</span> <span class="o">=</span> <span class="n">y_imbalanced</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">species_map</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Terapkan PCA langsung</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_features</span><span class="p">)</span>
+
+<span class="c1"># Split data hasil PCA</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y_imbalanced_int</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_imbalanced_int</span><span class="p">)</span>
+
+<span class="c1"># Latih model SVM pada data PCA</span>
+<span class="n">svm_imbalanced_pca</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">svm_imbalanced_pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediksi dan evaluasi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svm_imbalanced_pca</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil pada Data Tidak Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Plotting decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y_imbalanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">svm_imbalanced_pca</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary pada Data Tidak Seimbang (SVM)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil pada Data Tidak Seimbang (PCA) ---
+Akurasi: 0.9714285714285714
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00         5
+Iris-versicolor       1.00      0.93      0.97        15
+ Iris-virginica       0.94      1.00      0.97        15
+
+       accuracy                           0.97        35
+      macro avg       0.98      0.98      0.98        35
+   weighted avg       0.97      0.97      0.97        35
+</pre></div>
+</div>
+<img alt="_images/5beea46c111bd5c03561f2d3481478d1f3c017c950ed4cfce9a695dff98a0df0.png" src="_images/5beea46c111bd5c03561f2d3481478d1f3c017c950ed4cfce9a695dff98a0df0.png" />
+</div>
+</div>
+</section>
+<section id="menyeimbangkan-dataset-dengan-smote">
+<h2>4. Menyeimbangkan Dataset dengan SMOTE<a class="headerlink" href="#menyeimbangkan-dataset-dengan-smote" title="Link to this heading">#</a></h2>
+<p>Sekarang kita akan mengatasi masalah ketidakseimbangan data menggunakan <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong>. SMOTE bekerja dengan cara membuat sampel sintetis baru untuk kelas minoritas, bukan hanya menduplikasi data yang ada.</p>
+<p><strong>Cara Kerja SMOTE:</strong></p>
+<ol class="arabic simple">
+<li><p>Pilih sebuah sampel dari kelas minoritas secara acak.</p></li>
+<li><p>Temukan k-tetangga terdekatnya (k-nearest neighbors) yang juga berasal dari kelas minoritas.</p></li>
+<li><p>Pilih salah satu dari tetangga tersebut secara acak.</p></li>
+<li><p>Buat sampel sintetis baru pada titik manapun di sepanjang garis yang menghubungkan sampel asli dan tetangga yang dipilih.</p></li>
+</ol>
+<p>Proses ini diulang hingga jumlah sampel kelas minoritas sama dengan jumlah sampel kelas mayoritas, menghasilkan dataset yang seimbang. Kita menerapkan SMOTE pada data fitur asli (sebelum PCA).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi SMOTE. Cocok untuk data numerik.</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># fit pada data fitur dan target yang belum di-PCA</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_features</span><span class="p">,</span> <span class="n">y_imbalanced</span><span class="p">)</span>
+
+<span class="c1"># Buat DataFrame baru yang sudah seimbang</span>
+<span class="n">df_balanced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X_features</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">df_balanced</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_resampled</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Setelah SMOTE (Seimbang):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_balanced</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Kelas Setelah SMOTE (Seimbang):
+species
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="klasifikasi-svm-tunggal-plot-pca-pada-data-seimbang">
+<h2>5. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Seimbang<a class="headerlink" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-seimbang" title="Link to this heading">#</a></h2>
+<p>Langkah selanjutnya adalah melatih dan mengevaluasi model SVM baru menggunakan dataset yang sudah diseimbangkan oleh SMOTE. Prosesnya sama seperti sebelumnya: PCA, split data, training, evaluasi, dan plot.</p>
+<p><strong>Perbandingan Hasil:</strong>
+Bandingkan <em>Classification Report</em> dari model ini dengan model sebelumnya. Diharapkan, model yang dilatih pada data seimbang akan menunjukkan performa yang lebih baik dan lebih adil di semua kelas, terutama peningkatan metrik <em>recall</em> dan <em>f1-score</em> untuk kelas ‘Iris-setosa’. Batas keputusan yang dihasilkan juga seharusnya lebih baik dalam memisahkan kelas minoritas dari kelas lainnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil semua 4 fitur dari data yang sudah seimbang</span>
+<span class="n">X_balanced_features</span> <span class="o">=</span> <span class="n">df_balanced</span><span class="p">[[</span><span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">,</span> <span class="s1">&#39;petal length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal width&#39;</span><span class="p">]]</span>
+<span class="n">y_balanced</span> <span class="o">=</span> <span class="n">df_balanced</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
+<span class="n">y_balanced_int</span> <span class="o">=</span> <span class="n">y_balanced</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">species_map</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Terapkan PCA langsung</span>
+<span class="n">pca_bal</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca_balanced</span> <span class="o">=</span> <span class="n">pca_bal</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_balanced_features</span><span class="p">)</span>
+
+<span class="c1"># Split data hasil PCA</span>
+<span class="n">X_train_b</span><span class="p">,</span> <span class="n">X_test_b</span><span class="p">,</span> <span class="n">y_train_b</span><span class="p">,</span> <span class="n">y_test_b</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pca_balanced</span><span class="p">,</span> <span class="n">y_balanced_int</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_balanced_int</span><span class="p">)</span>
+
+<span class="c1"># Latih model SVM pada data PCA</span>
+<span class="n">svm_balanced_pca</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">svm_balanced_pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_b</span><span class="p">,</span> <span class="n">y_train_b</span><span class="p">)</span>
+
+<span class="c1"># Prediksi dan evaluasi</span>
+<span class="n">y_pred_b</span> <span class="o">=</span> <span class="n">svm_balanced_pca</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil pada Data Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_b</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span> <span class="n">y_pred_b</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Plotting decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca_balanced</span><span class="p">,</span> <span class="n">y_balanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">svm_balanced_pca</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary pada Data Seimbang (SVM)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil pada Data Seimbang (PCA) ---
+Akurasi: 0.9111111111111111
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00        15
+Iris-versicolor       0.82      0.93      0.88        15
+ Iris-virginica       0.92      0.80      0.86        15
+
+       accuracy                           0.91        45
+      macro avg       0.92      0.91      0.91        45
+   weighted avg       0.92      0.91      0.91        45
+</pre></div>
+</div>
+<img alt="_images/628cb558ee5685495ff4d1e6e0de6ed0001c8024c4a5e6026940daff94f5c0b0.png" src="_images/628cb558ee5685495ff4d1e6e0de6ed0001c8024c4a5e6026940daff94f5c0b0.png" />
+</div>
+</div>
+</section>
+<section id="klasifikasi-dengan-bagging-classifier-pada-data-tidak-seimbang">
+<h2>6. Klasifikasi dengan Bagging Classifier pada Data Tidak Seimbang<a class="headerlink" href="#klasifikasi-dengan-bagging-classifier-pada-data-tidak-seimbang" title="Link to this heading">#</a></h2>
+<p><strong>Bagging (Bootstrap Aggregating)</strong> adalah metode <em>ensemble learning</em> yang bertujuan untuk mengurangi varians dan meningkatkan stabilitas model. Cara kerjanya adalah dengan melatih beberapa model (<em>base estimators</em>) secara paralel pada subset data yang berbeda (dibuat dengan <em>sampling with replacement</em>), lalu menggabungkan prediksi mereka (misalnya, dengan voting).</p>
+<p>Di sini, kita akan mencoba <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code> dengan dua <em>base estimator</em> yang berbeda:</p>
+<ol class="arabic simple">
+<li><p><strong>Support Vector Machine (SVM):</strong> Model yang kuat namun bisa sensitif terhadap data latih.</p></li>
+<li><p><strong>Decision Tree:</strong> Model berbasis aturan yang mempartisi ruang fitur.</p></li>
+</ol>
+<p>Kita akan melatih dan memvisualisasikan kedua versi Bagging ini pada data <strong>tidak seimbang</strong> untuk melihat apakah teknik ensemble ini saja sudah cukup untuk meningkatkan performa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi Bagging Classifier dengan SVM sebagai base estimator</span>
+<span class="n">bagging_svm_imbalanced</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_svm_imbalanced</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_bag_svm</span> <span class="o">=</span> <span class="n">bagging_svm_imbalanced</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Bagging SVM pada Data Tidak Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_bag_svm</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_bag_svm</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Inisialisasi Bagging Classifier dengan Decision Tree sebagai base estimator</span>
+<span class="n">bagging_dt_imbalanced</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_dt_imbalanced</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_bag_dt</span> <span class="o">=</span> <span class="n">bagging_dt_imbalanced</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hasil Bagging Decision Tree pada Data Tidak Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_bag_dt</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_bag_dt</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Plotting decision boundary untuk Bagging SVM</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y_imbalanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">bagging_svm_imbalanced</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary Bagging SVM pada Data Tidak Seimbang&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plotting decision boundary untuk Bagging Decision Tree</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">y_imbalanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">bagging_dt_imbalanced</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary Bagging DT pada Data Tidak Seimbang&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Bagging SVM pada Data Tidak Seimbang (PCA) ---
+Akurasi: 0.9714285714285714
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00         5
+Iris-versicolor       1.00      0.93      0.97        15
+ Iris-virginica       0.94      1.00      0.97        15
+
+       accuracy                           0.97        35
+      macro avg       0.98      0.98      0.98        35
+   weighted avg       0.97      0.97      0.97        35
+
+
+--- Hasil Bagging Decision Tree pada Data Tidak Seimbang (PCA) ---
+Akurasi: 0.9142857142857143
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00         5
+Iris-versicolor       0.93      0.87      0.90        15
+ Iris-virginica       0.88      0.93      0.90        15
+
+       accuracy                           0.91        35
+      macro avg       0.93      0.93      0.93        35
+   weighted avg       0.92      0.91      0.91        35
+</pre></div>
+</div>
+<img alt="_images/1ce3a6d1737648ab9c270fdcc2f094b14bdf96ff80978609d2cbac3ba83ba5dc.png" src="_images/1ce3a6d1737648ab9c270fdcc2f094b14bdf96ff80978609d2cbac3ba83ba5dc.png" />
+<img alt="_images/dbeadba1c769edda727920cb59e968cf9d3afc5b3bbb1801ffb8b9003da33bcf.png" src="_images/dbeadba1c769edda727920cb59e968cf9d3afc5b3bbb1801ffb8b9003da33bcf.png" />
+</div>
+</div>
+</section>
+<section id="klasifikasi-dengan-bagging-classifier-pada-data-seimbang">
+<h2>7. Klasifikasi dengan Bagging Classifier pada Data Seimbang<a class="headerlink" href="#klasifikasi-dengan-bagging-classifier-pada-data-seimbang" title="Link to this heading">#</a></h2>
+<p>Sekarang, kita gabungkan kedua teknik: <strong>SMOTE</strong> untuk menangani ketidakseimbangan kelas dan <strong>Bagging</strong> untuk meningkatkan stabilitas model. Kita akan melatih dan memvisualisasikan kembali <code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code> dengan SVM dan Decision Tree pada data yang sudah diseimbangkan oleh SMOTE. Kombinasi ini seringkali memberikan hasil yang paling robas dan akurat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Latih Bagging SVM pada data seimbang</span>
+<span class="n">bagging_svm_balanced</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_svm_balanced</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_b</span><span class="p">,</span> <span class="n">y_train_b</span><span class="p">)</span>
+<span class="n">y_pred_bag_svm_b</span> <span class="o">=</span> <span class="n">bagging_svm_balanced</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Bagging SVM pada Data Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_bag_svm_b</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span> <span class="n">y_pred_bag_svm_b</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Latih Bagging Decision Tree pada data seimbang</span>
+<span class="n">bagging_dt_balanced</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_dt_balanced</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_b</span><span class="p">,</span> <span class="n">y_train_b</span><span class="p">)</span>
+<span class="n">y_pred_bag_dt_b</span> <span class="o">=</span> <span class="n">bagging_dt_balanced</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hasil Bagging Decision Tree pada Data Seimbang (PCA) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_bag_dt_b</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_b</span><span class="p">,</span> <span class="n">y_pred_bag_dt_b</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">species_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Plotting decision boundary untuk Bagging SVM on balanced data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca_balanced</span><span class="p">,</span> <span class="n">y_balanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">bagging_svm_balanced</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary Bagging SVM pada Data Seimbang&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plotting decision boundary untuk Bagging Decision Tree on balanced data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_decision_regions</span><span class="p">(</span><span class="n">X_pca_balanced</span><span class="p">,</span> <span class="n">y_balanced_int</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">bagging_dt_balanced</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Principal Component 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary Bagging DT pada Data Seimbang&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Bagging SVM pada Data Seimbang (PCA) ---
+Akurasi: 0.9111111111111111
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00        15
+Iris-versicolor       0.82      0.93      0.88        15
+ Iris-virginica       0.92      0.80      0.86        15
+
+       accuracy                           0.91        45
+      macro avg       0.92      0.91      0.91        45
+   weighted avg       0.92      0.91      0.91        45
+
+
+--- Hasil Bagging Decision Tree pada Data Seimbang (PCA) ---
+Akurasi: 0.9111111111111111
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+    Iris-setosa       1.00      1.00      1.00        15
+Iris-versicolor       0.82      0.93      0.88        15
+ Iris-virginica       0.92      0.80      0.86        15
+
+       accuracy                           0.91        45
+      macro avg       0.92      0.91      0.91        45
+   weighted avg       0.92      0.91      0.91        45
+</pre></div>
+</div>
+<img alt="_images/92fc59fb07364d3de8c1de7321514f021bb337508b567423ff091612b21fbd89.png" src="_images/92fc59fb07364d3de8c1de7321514f021bb337508b567423ff091612b21fbd89.png" />
+<img alt="_images/3fc4c5aa423c3f1f3244e9281e44c2ce9f5eadc3e7978c2001c08d4f7b80b210.png" src="_images/3fc4c5aa423c3f1f3244e9281e44c2ce9f5eadc3e7978c2001c08d4f7b80b210.png" />
+</div>
+</div>
+</section>
+<section id="kesimpulan-dan-perbandingan">
+<h2>8. Kesimpulan dan Perbandingan<a class="headerlink" href="#kesimpulan-dan-perbandingan" title="Link to this heading">#</a></h2>
+<p>Dari eksperimen di atas, kita dapat menarik beberapa kesimpulan:</p>
+<ol class="arabic simple">
+<li><p><strong>Model pada Data Tidak Seimbang:</strong> Model (SVM tunggal, Bagging SVM, Bagging DT) yang dilatih pada data tidak seimbang menunjukkan performa yang kurang baik pada kelas minoritas (‘Iris-setosa’), meskipun akurasi keseluruhannya bisa jadi tinggi. Ini adalah jebakan klasik dari data tidak seimbang.</p></li>
+<li><p><strong>Efek SMOTE:</strong> Setelah menerapkan SMOTE, semua model menunjukkan peningkatan signifikan dalam mengenali kelas minoritas. Hal ini terlihat jelas dari metrik <em>recall</em> dan <em>f1-score</em> untuk ‘Iris-setosa’ yang meningkat drastis. Akurasi keseluruhan mungkin sedikit turun, namun model menjadi jauh lebih adil dan tidak bias.</p></li>
+<li><p><strong>Efek Bagging:</strong> Bagging Classifier, terutama ketika digabungkan dengan SMOTE, memberikan hasil yang sangat baik. Bagging membantu menstabilkan prediksi dan mengurangi <em>overfitting</em> yang mungkin terjadi, sementara SMOTE memastikan bahwa model memiliki cukup data dari kelas minoritas untuk dipelajari.</p></li>
+</ol>
+<p><strong>Kesimpulan Akhir:</strong> Kombinasi antara teknik <em>oversampling</em> seperti <strong>SMOTE</strong> dengan metode <em>ensemble</em> seperti <strong>Bagging</strong> adalah strategi yang sangat efektif untuk mengatasi masalah klasifikasi pada dataset yang tidak seimbang.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data-preprocessing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Data Preprocessing</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="imbalanced_bank.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Imbalanced Data Bank</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muat-data">1. Muat Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-dataset-tidak-seimbang">2. Membuat Dataset Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-tidak-seimbang">3. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyeimbangkan-dataset-dengan-smote">4. Menyeimbangkan Dataset dengan SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-svm-tunggal-plot-pca-pada-data-seimbang">5. Klasifikasi (SVM Tunggal) &amp; Plot PCA pada Data Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-dengan-bagging-classifier-pada-data-tidak-seimbang">6. Klasifikasi dengan Bagging Classifier pada Data Tidak Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-dengan-bagging-classifier-pada-data-seimbang">7. Klasifikasi dengan Bagging Classifier pada Data Seimbang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-dan-perbandingan">8. Kesimpulan dan Perbandingan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdulloh Sahl - 2025
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
